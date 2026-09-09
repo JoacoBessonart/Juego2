@@ -3,7 +3,7 @@ namespace Ucu.Poo.RolePlayGame
     /// <summary>
     /// Mago del juego.
     /// </summary>
-    public class Wizard
+    public class Wizard : IAttacker
     {
         public string Name { get; private set; }
 
@@ -31,9 +31,9 @@ namespace Ucu.Poo.RolePlayGame
             return this.Inventory.GetDefenseValue();
         }
 
-        public void ReceiveAttack(int power)
+        public void ReceiveAttack(IAttacker attacker)
         {
-            this.Health -= power;
+            this.Health -= attacker.GetAttackValue();
 
             if (this.Health < 0) this.Health = 0;
         }
