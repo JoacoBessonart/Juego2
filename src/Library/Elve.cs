@@ -3,7 +3,7 @@ namespace Ucu.Poo.RolePlayGame
     /// <summary>
     /// Elfo del juego.
     /// </summary>
-    public class Elve
+    public class Elve : IAttacker
     {
         public string Name { get; private set; }
 
@@ -31,11 +31,14 @@ namespace Ucu.Poo.RolePlayGame
             return this.Inventory.GetDefenseValue();
         }
 
-        public void ReceiveAttack(int power)
+        public void ReceiveAttack(IAttacker attacker)
         {
-            this.Health -= power;
+            this.Health -= attacker.GetAttackValue();
 
-            if (this.Health < 0) this.Health = 0;
+            if (this.Health < 0)
+            {
+                this.Health = 0;
+            }
         }
 
         public void Cure()

@@ -3,44 +3,47 @@ namespace Ucu.Poo.RolePlayGame
     /// <summary>
     /// Enano del juego.
     /// </summary>
-    public class Dwarve
+    public class Dwarve : IAttacker
+{
+    public string Name { get; private set; }
+
+    public Inventory Inventory { get; private set; }
+
+    public int Health { get; private set; }
+
+    public int InitialHealth { get; private set; }
+
+    public Dwarve(string name)
     {
-        public string Name { get; private set; }
+        this.Name = name;
+        this.InitialHealth = 100;
+        this.Health = this.InitialHealth;
+        this.Inventory = new Inventory();
+    }
 
-        public Inventory Inventory { get; private set; }
+    public int GetAttackValue()
+    {
+        return this.Inventory.GetAttackValue();
+    }
 
-        public int Health { get; private set; }
+    public int GetDefenseValue()
+    {
+        return this.Inventory.GetDefenseValue();
+    }
 
-        public int InitialHealth { get; private set; }
+    public void ReceiveAttack(IAttacker attacker)
+    {
+        this.Health -= attacker.GetAttackValue();
 
-        public Dwarve(string name)
+        if (this.Health < 0)
         {
-            this.Name = name;
-            this.InitialHealth = 100;
-            this.Health = this.InitialHealth;
-            this.Inventory = new Inventory();
-        }
-
-        public int GetAttackValue()
-        {
-            return this.Inventory.GetAttackValue();
-        }
-
-        public int GetDefenseValue()
-        {
-            return this.Inventory.GetDefenseValue();
-        }
-
-        public void ReceiveAttack(int power)
-        {
-            this.Health -= power;
-
-            if (this.Health < 0) this.Health = 0;
-        }
-
-        public void Cure()
-        {
-            this.Health = this.InitialHealth;
+            this.Health = 0;
         }
     }
+
+    public void Cure()
+    {
+        this.Health = this.InitialHealth;
+    }
+}
 }
