@@ -17,16 +17,6 @@ namespace Ucu.Poo.RolePlayGame
             this.Armor = armor;
         }
 
-        public void AddMagicStaff(MagicStaff magicStaff)
-        {
-            this.MagicStaff = magicStaff;
-        }
-
-        public void AddSpellbook(Spellbook spellbook)
-        {
-            this.Spellbook = spellbook;
-        }
-
         public void AddSword(Sword sword)
         {
             this.Sword = sword;
@@ -45,16 +35,6 @@ namespace Ucu.Poo.RolePlayGame
         public void RemoveArmor()
         {
             this.Armor = null;
-        }
-
-        public void RemoveMagicStaff()
-        {
-            this.MagicStaff = null;
-        }
-
-        public void RemoveSpellbook()
-        {
-            this.Spellbook = null;
         }
 
         public void RemoveSword()
@@ -76,19 +56,9 @@ namespace Ucu.Poo.RolePlayGame
                 total += this.Axe.AttackValue;
             }
 
-            if (this.MagicStaff != null)
-            {
-                total += this.MagicStaff.AttackValue;
-            }
-
             if (this.Sword != null)
             {
                 total += this.Sword.AttackValue;
-            }
-
-            if (this.Spellbook != null)
-            {
-                total += this.Spellbook.AttackValue;
             }
 
             return total;
@@ -103,19 +73,9 @@ namespace Ucu.Poo.RolePlayGame
                 total += this.Armor.DefenseValue;
             }
 
-            if (this.MagicStaff != null)
-            {
-                total += this.MagicStaff.DefenseValue;
-            }
-
             if (this.Tunic != null)
             {
                 total += this.Tunic.DefenseValue;
-            }
-
-            if (this.Spellbook != null)
-            {
-                total += this.Spellbook.DefenseValue;
             }
 
             return total;

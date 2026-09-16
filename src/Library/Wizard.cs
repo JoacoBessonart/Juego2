@@ -3,7 +3,7 @@ namespace Ucu.Poo.RolePlayGame
     public class Wizard : ICharacter
     {
         public string Name { get; private set; }
-        public InventoryMagic InventoryMagic get; private set; }
+        public InventoryMagic InventoryMagic { get; private set; }
         public int Health { get; private set; }
         public int InitialHealth { get; private set; }
         public Wizard(string name)
