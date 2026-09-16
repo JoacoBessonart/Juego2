@@ -1,6 +1,6 @@
 namespace Ucu.Poo.RolePlayGame
 {
-    public class Tunic : IItems
+    public class Tunic : IItem
     {
         public int AttackValue { get; private set; }
 

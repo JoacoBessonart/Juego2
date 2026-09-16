@@ -3,26 +3,26 @@ namespace Ucu.Poo.RolePlayGame
     public class Wizard : ICharacter
     {
         public string Name { get; private set; }
-        public Inventory Inventory { get; private set; }
+        public InventoryMagic InventoryMagic get; private set; }
         public int Health { get; private set; }
         public int InitialHealth { get; private set; }
-
         public Wizard(string name)
         {
             this.Name = name;
             this.InitialHealth = 100;
             this.Health = this.InitialHealth;
-            this.Inventory = new Inventory();
+            this.InventoryMagic = new InventoryMagic();
+      
         }
 
         public int GetAttackValue()
         {
-            return this.Inventory.GetAttackValue();
+            return this.InventoryMagic.GetAttackValue();
         }
 
         public int GetDefenseValue()
         {
-            return this.Inventory.GetDefenseValue();
+            return this.InventoryMagic.GetDefenseValue();
         }
 
         public void ReceiveAttack(ICharacter attacker)

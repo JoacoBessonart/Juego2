@@ -1,6 +1,6 @@
 namespace Ucu.Poo.RolePlayGame
 {
-    public class Sword : IItems
+    public class Sword : IItem
     {
         public int AttackValue { get; private set; }
 

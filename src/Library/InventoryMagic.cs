@@ -1,9 +1,11 @@
 namespace Ucu.Poo.RolePlayGame
 {
-    public class Inventory
+    public class InventoryMagic
     {
         public IItem Axe { get; private set; }
         public IItem Armor { get; private set; }
+        public IMagicItem MagicStaff { get; private set; }
+        public IMagicItem Spellbook { get; private set; }
         public IItem Sword { get; private set; }
         public IItem Tunic { get; private set; }
 
