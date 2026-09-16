@@ -1,11 +1,24 @@
 namespace Ucu.Poo.RolePlayGame
 {
-    /// <summary>
-    /// Libro que puede contener hechizos.
-    /// </summary>
-    public class Spellbook
+    public class Spellbook : IItems
     {
         public Spell[] Spells { get; private set; }
+
+        public int AttackValue
+        {
+            get
+            {
+                return this.GetAttackValue();
+            }
+        }
+
+        public int DefenseValue
+        {
+            get
+            {
+                return this.GetDefenseValue();
+            }
+        }
 
         public Spellbook()
         {

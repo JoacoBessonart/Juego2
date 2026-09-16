@@ -1,9 +1,6 @@
 namespace Ucu.Poo.RolePlayGame
 {
-    /// <summary>
-    /// Espada que aporta ataque.
-    /// </summary>
-    public class Sword
+    public class Sword : IItems
     {
         public int AttackValue { get; private set; }
 

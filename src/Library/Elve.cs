@@ -1,16 +1,10 @@
 namespace Ucu.Poo.RolePlayGame
 {
-    /// <summary>
-    /// Elfo del juego.
-    /// </summary>
-    public class Elve : IAttacker
+    public class Elve : ICharacter
     {
         public string Name { get; private set; }
-
         public Inventory Inventory { get; private set; }
-
         public int Health { get; private set; }
-
         public int InitialHealth { get; private set; }
 
         public Elve(string name)
@@ -31,13 +25,16 @@ namespace Ucu.Poo.RolePlayGame
             return this.Inventory.GetDefenseValue();
         }
 
-        public void ReceiveAttack(IAttacker attacker)
+        public void ReceiveAttack(ICharacter attacker)
         {
-            this.Health -= attacker.GetAttackValue();
-
-            if (this.Health < 0)
+            if (attacker != null)
             {
-                this.Health = 0;
+                this.Health -= attacker.GetAttackValue();
+
+                if (this.Health < 0)
+                {
+                    this.Health = 0;
+                }
             }
         }
 

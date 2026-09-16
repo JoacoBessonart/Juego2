@@ -1,9 +1,6 @@
 namespace Ucu.Poo.RolePlayGame
 {
-    /// <summary>
-    /// Hacha que aporta ataque.
-    /// </summary>
-    public class Axe
+    public class Axe : IItems
     {
         public int AttackValue { get; private set; }
 

@@ -1,16 +1,10 @@
 namespace Ucu.Poo.RolePlayGame
 {
-    /// <summary>
-    /// Mago del juego.
-    /// </summary>
-    public class Wizard : IAttacker
+    public class Wizard : ICharacter
     {
         public string Name { get; private set; }
-
         public Inventory Inventory { get; private set; }
-
         public int Health { get; private set; }
-
         public int InitialHealth { get; private set; }
 
         public Wizard(string name)
@@ -31,11 +25,17 @@ namespace Ucu.Poo.RolePlayGame
             return this.Inventory.GetDefenseValue();
         }
 
-        public void ReceiveAttack(IAttacker attacker)
+        public void ReceiveAttack(ICharacter attacker)
         {
-            this.Health -= attacker.GetAttackValue();
+            if (attacker != null)
+            {
+                this.Health -= attacker.GetAttackValue();
 
-            if (this.Health < 0) this.Health = 0;
+                if (this.Health < 0)
+                {
+                    this.Health = 0;
+                }
+            }
         }
 
         public void Cure()

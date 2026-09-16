@@ -1,9 +1,6 @@
 namespace Ucu.Poo.RolePlayGame
 {
-    /// <summary>
-    /// Hechizo que aporta ataque y defensa al libro de hechizos.
-    /// </summary>
-    public class Spell
+    public class Spell : IItems
     {
         public int AttackValue { get; private set; }
 

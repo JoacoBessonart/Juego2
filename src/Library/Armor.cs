@@ -1,9 +1,6 @@
 namespace Ucu.Poo.RolePlayGame
 {
-    /// <summary>
-    /// Armadura que aporta defensa.
-    /// </summary>
-    public class Armor
+    public class Armor : IItems
     {
         public int AttackValue { get; private set; }
 

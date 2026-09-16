@@ -1,9 +1,6 @@
 namespace Ucu.Poo.RolePlayGame
 {
-    /// <summary>
-    /// Túnica que aporta defensa.
-    /// </summary>
-    public class Tunic
+    public class Tunic : IItems
     {
         public int AttackValue { get; private set; }
 

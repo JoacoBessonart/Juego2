@@ -1,21 +1,13 @@
 namespace Ucu.Poo.RolePlayGame
 {
-    /// <summary>
-    /// Elementos que puede tener un personaje.
-    /// </summary>
     public class Inventory
     {
-        public Axe Axe { get; private set; }
-
-        public Armor Armor { get; private set; }
-
-        public MagicStaff MagicStaff { get; private set; }
-
-        public Spellbook Spellbook { get; private set; }
-
-        public Sword Sword { get; private set; }
-
-        public Tunic Tunic { get; private set; }
+        public IItems Axe { get; private set; }
+        public IItems Armor { get; private set; }
+        public IItems MagicStaff { get; private set; }
+        public IItems Spellbook { get; private set; }
+        public IItems Sword { get; private set; }
+        public IItems Tunic { get; private set; }
 
         public void AddAxe(Axe axe)
         {
@@ -81,10 +73,25 @@ namespace Ucu.Poo.RolePlayGame
         {
             int total = 0;
 
-            if (this.Axe != null) total += this.Axe.AttackValue;
-            if (this.MagicStaff != null) total += this.MagicStaff.AttackValue;
-            if (this.Sword != null) total += this.Sword.AttackValue;
-            if (this.Spellbook != null) total += this.Spellbook.GetAttackValue();
+            if (this.Axe != null)
+            {
+                total += this.Axe.AttackValue;
+            }
+
+            if (this.MagicStaff != null)
+            {
+                total += this.MagicStaff.AttackValue;
+            }
+
+            if (this.Sword != null)
+            {
+                total += this.Sword.AttackValue;
+            }
+
+            if (this.Spellbook != null)
+            {
+                total += this.Spellbook.AttackValue;
+            }
 
             return total;
         }
@@ -93,10 +100,25 @@ namespace Ucu.Poo.RolePlayGame
         {
             int total = 0;
 
-            if (this.Armor != null) total += this.Armor.DefenseValue;
-            if (this.MagicStaff != null) total += this.MagicStaff.DefenseValue;
-            if (this.Tunic != null) total += this.Tunic.DefenseValue;
-            if (this.Spellbook != null) total += this.Spellbook.GetDefenseValue();
+            if (this.Armor != null)
+            {
+                total += this.Armor.DefenseValue;
+            }
+
+            if (this.MagicStaff != null)
+            {
+                total += this.MagicStaff.DefenseValue;
+            }
+
+            if (this.Tunic != null)
+            {
+                total += this.Tunic.DefenseValue;
+            }
+
+            if (this.Spellbook != null)
+            {
+                total += this.Spellbook.DefenseValue;
+            }
 
             return total;
         }

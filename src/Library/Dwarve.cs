@@ -1,49 +1,46 @@
 namespace Ucu.Poo.RolePlayGame
 {
-    /// <summary>
-    /// Enano del juego.
-    /// </summary>
-    public class Dwarve : IAttacker
-{
-    public string Name { get; private set; }
-
-    public Inventory Inventory { get; private set; }
-
-    public int Health { get; private set; }
-
-    public int InitialHealth { get; private set; }
-
-    public Dwarve(string name)
+    public class Dwarve : ICharacter
     {
-        this.Name = name;
-        this.InitialHealth = 100;
-        this.Health = this.InitialHealth;
-        this.Inventory = new Inventory();
-    }
+        public string Name { get; private set; }
+        public Inventory Inventory { get; private set; }
+        public int Health { get; private set; }
+        public int InitialHealth { get; private set; }
 
-    public int GetAttackValue()
-    {
-        return this.Inventory.GetAttackValue();
-    }
-
-    public int GetDefenseValue()
-    {
-        return this.Inventory.GetDefenseValue();
-    }
-
-    public void ReceiveAttack(IAttacker attacker)
-    {
-        this.Health -= attacker.GetAttackValue();
-
-        if (this.Health < 0)
+        public Dwarve(string name)
         {
-            this.Health = 0;
+            this.Name = name;
+            this.InitialHealth = 100;
+            this.Health = this.InitialHealth;
+            this.Inventory = new Inventory();
+        }
+
+        public int GetAttackValue()
+        {
+            return this.Inventory.GetAttackValue();
+        }
+
+        public int GetDefenseValue()
+        {
+            return this.Inventory.GetDefenseValue();
+        }
+
+        public void ReceiveAttack(ICharacter attacker)
+        {
+            if (attacker != null)
+            {
+                this.Health -= attacker.GetAttackValue();
+
+                if (this.Health < 0)
+                {
+                    this.Health = 0;
+                }
+            }
+        }
+
+        public void Cure()
+        {
+            this.Health = this.InitialHealth;
         }
     }
-
-    public void Cure()
-    {
-        this.Health = this.InitialHealth;
-    }
-}
 }

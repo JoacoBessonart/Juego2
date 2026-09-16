@@ -1,9 +1,6 @@
 namespace Ucu.Poo.RolePlayGame
 {
-    /// <summary>
-    /// Bastón mágico que aporta ataque y defensa.
-    /// </summary>
-    public class MagicStaff
+    public class MagicStaff : IItems
     {
         public int AttackValue { get; private set; }
 
