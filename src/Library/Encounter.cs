@@ -61,6 +61,7 @@ namespace Ucu.Poo.RolePlayGame
                 if (hero.VictoryPoints >= 5)
                 {
                     hero.Cure();
+                    hero.AddVictoryPoints(-5);
                 }
             }
         }
