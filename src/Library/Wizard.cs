@@ -1,46 +1,23 @@
 namespace Ucu.Poo.RolePlayGame
 {
-    public class Wizard : ICharacter
+    public class Wizard : Character
     {
-        public string Name { get; private set; }
         public InventoryMagic InventoryMagic { get; private set; }
-        public int Health { get; private set; }
-        public int InitialHealth { get; private set; }
+
         public Wizard(string name)
+            : base(name)
         {
-            this.Name = name;
-            this.InitialHealth = 100;
-            this.Health = this.InitialHealth;
             this.InventoryMagic = new InventoryMagic();
-      
         }
 
-        public int GetAttackValue()
+        public override int GetAttackValue()
         {
-            return this.InventoryMagic.GetAttackValue();
+            return base.GetAttackValue() + this.InventoryMagic.GetAttackValue();
         }
 
-        public int GetDefenseValue()
+        public override int GetDefenseValue()
         {
-            return this.InventoryMagic.GetDefenseValue();
-        }
-
-        public void ReceiveAttack(ICharacter attacker)
-        {
-            if (attacker != null)
-            {
-                this.Health -= attacker.GetAttackValue();
-
-                if (this.Health < 0)
-                {
-                    this.Health = 0;
-                }
-            }
-        }
-
-        public void Cure()
-        {
-            this.Health = this.InitialHealth;
+            return base.GetDefenseValue() + this.InventoryMagic.GetDefenseValue();
         }
     }
 }

@@ -2,22 +2,8 @@ namespace Ucu.Poo.RolePlayGame
 {
     public class InventoryMagic
     {
-        public IItem Axe { get; private set; }
-        public IItem Armor { get; private set; }
         public IMagicItem MagicStaff { get; private set; }
         public IMagicItem Spellbook { get; private set; }
-        public IItem Sword { get; private set; }
-        public IItem Tunic { get; private set; }
-
-        public void AddAxe(Axe axe)
-        {
-            this.Axe = axe;
-        }
-
-        public void AddArmor(Armor armor)
-        {
-            this.Armor = armor;
-        }
 
         public void AddMagicStaff(MagicStaff magicStaff)
         {
@@ -27,26 +13,6 @@ namespace Ucu.Poo.RolePlayGame
         public void AddSpellbook(Spellbook spellbook)
         {
             this.Spellbook = spellbook;
-        }
-
-        public void AddSword(Sword sword)
-        {
-            this.Sword = sword;
-        }
-
-        public void AddTunic(Tunic tunic)
-        {
-            this.Tunic = tunic;
-        }
-
-        public void RemoveAxe()
-        {
-            this.Axe = null;
-        }
-
-        public void RemoveArmor()
-        {
-            this.Armor = null;
         }
 
         public void RemoveMagicStaff()
@@ -59,33 +25,13 @@ namespace Ucu.Poo.RolePlayGame
             this.Spellbook = null;
         }
 
-        public void RemoveSword()
-        {
-            this.Sword = null;
-        }
-
-        public void RemoveTunic()
-        {
-            this.Tunic = null;
-        }
-
         public int GetAttackValue()
         {
             int total = 0;
 
-            if (this.Axe != null)
-            {
-                total += this.Axe.AttackValue;
-            }
-
             if (this.MagicStaff != null)
             {
                 total += this.MagicStaff.AttackValue;
-            }
-
-            if (this.Sword != null)
-            {
-                total += this.Sword.AttackValue;
             }
 
             if (this.Spellbook != null)
@@ -100,19 +46,9 @@ namespace Ucu.Poo.RolePlayGame
         {
             int total = 0;
 
-            if (this.Armor != null)
-            {
-                total += this.Armor.DefenseValue;
-            }
-
             if (this.MagicStaff != null)
             {
                 total += this.MagicStaff.DefenseValue;
-            }
-
-            if (this.Tunic != null)
-            {
-                total += this.Tunic.DefenseValue;
             }
 
             if (this.Spellbook != null)

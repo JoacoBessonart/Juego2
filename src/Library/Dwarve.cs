@@ -1,46 +1,10 @@
 namespace Ucu.Poo.RolePlayGame
 {
-    public class Dwarve : ICharacter
+    public class Dwarve : Character
     {
-        public string Name { get; private set; }
-        public Inventory Inventory { get; private set; }
-        public int Health { get; private set; }
-        public int InitialHealth { get; private set; }
-
         public Dwarve(string name)
+            : base(name)
         {
-            this.Name = name;
-            this.InitialHealth = 100;
-            this.Health = this.InitialHealth;
-            this.Inventory = new Inventory();
-        }
-
-        public int GetAttackValue()
-        {
-            return this.Inventory.GetAttackValue();
-        }
-
-        public int GetDefenseValue()
-        {
-            return this.Inventory.GetDefenseValue();
-        }
-
-        public void ReceiveAttack(ICharacter attacker)
-        {
-            if (attacker != null)
-            {
-                this.Health -= attacker.GetAttackValue();
-
-                if (this.Health < 0)
-                {
-                    this.Health = 0;
-                }
-            }
-        }
-
-        public void Cure()
-        {
-            this.Health = this.InitialHealth;
         }
     }
 }
