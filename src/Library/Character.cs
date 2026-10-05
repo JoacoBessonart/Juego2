@@ -29,7 +29,13 @@ namespace Ucu.Poo.RolePlayGame
         {
             if (attacker != null)
             {
-                this.Health -= attacker.GetAttackValue();
+                int damage = attacker.GetAttackValue() - this.GetDefenseValue();
+
+                // La defensa puede bloquear el ataque, pero no recuperar vida.
+                if (damage > 0)
+                {
+                    this.Health -= damage;
+                }
 
                 if (this.Health < 0)
                 {
