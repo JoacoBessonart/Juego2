@@ -2,10 +2,10 @@ namespace Ucu.Poo.RolePlayGame
 {
     public class Inventory
     {
-        public IItem Axe { get; private set; }
-        public IItem Armor { get; private set; }
-        public IItem Sword { get; private set; }
-        public IItem Tunic { get; private set; }
+        public Item Axe { get; private set; }
+        public Item Armor { get; private set; }
+        public Item Sword { get; private set; }
+        public Item Tunic { get; private set; }
 
         public void AddAxe(Axe axe)
         {

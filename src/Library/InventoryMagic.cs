@@ -2,8 +2,8 @@ namespace Ucu.Poo.RolePlayGame
 {
     public class InventoryMagic
     {
-        public IMagicItem MagicStaff { get; private set; }
-        public IMagicItem Spellbook { get; private set; }
+        public Item MagicStaff { get; private set; }
+        public Item Spellbook { get; private set; }
 
         public void AddMagicStaff(MagicStaff magicStaff)
         {

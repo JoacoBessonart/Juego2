@@ -1,15 +1,10 @@
 namespace Ucu.Poo.RolePlayGame
 {
-    public class MagicStaff : IItem, IMagicItem
+    public class MagicStaff : Item
     {
-        public int AttackValue { get; private set; }
-
-        public int DefenseValue { get; private set; }
-
         public MagicStaff(int attackValue, int defenseValue)
+            : base(attackValue, defenseValue)
         {
-            this.AttackValue = attackValue;
-            this.DefenseValue = defenseValue;
         }
     }
 }

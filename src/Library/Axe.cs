@@ -1,15 +1,10 @@
 namespace Ucu.Poo.RolePlayGame
 {
-    public class Axe : IItem
+    public class Axe : Item
     {
-        public int AttackValue { get; private set; }
-
-        public int DefenseValue { get; private set; }
-
         public Axe(int attackValue)
+            : base(attackValue, 0)
         {
-            this.AttackValue = attackValue;
-            this.DefenseValue = 0;
         }
     }
 }

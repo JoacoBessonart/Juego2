@@ -1,10 +1,10 @@
 namespace Ucu.Poo.RolePlayGame
 {
-    public class Spellbook : IItem, IMagicItem
+    public class Spellbook : Item
     {
         public Spell[] Spells { get; private set; }
 
-        public int AttackValue
+        public override int AttackValue
         {
             get
             {
@@ -12,7 +12,7 @@ namespace Ucu.Poo.RolePlayGame
             }
         }
 
-        public int DefenseValue
+        public override int DefenseValue
         {
             get
             {
@@ -21,6 +21,7 @@ namespace Ucu.Poo.RolePlayGame
         }
 
         public Spellbook()
+            : base(0, 0)
         {
             this.Spells = new Spell[0];
         }
