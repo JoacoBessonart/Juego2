@@ -1,6 +1,6 @@
 namespace Ucu.Poo.RolePlayGame
 {
-    public class Wizard : Character
+    public class Wizard : Hero
     {
         public InventoryMagic InventoryMagic { get; private set; }
 

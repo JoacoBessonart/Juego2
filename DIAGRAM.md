@@ -2,107 +2,114 @@
 
 ```mermaid
 classDiagram
-    class IAttacker {
-        <<interface>>
+    class Character {
+        <<abstract>>
+        +string Name
+        +Inventory Inventory
+        +int Health
+        +int InitialHealth
+        +Character(string name)
         +int GetAttackValue()
+        +int GetDefenseValue()
+        +void ReceiveAttack(Character attacker)
+        +void Cure()
+    }
+
+    class Hero {
+        <<abstract>>
+        +int VictoryPoints
+        #Hero(string name)
+        +void AddVictoryPoints(int victoryPoints)
+    }
+
+    class Enemy {
+        <<abstract>>
+        +int VictoryPoints
+        #Enemy(string name, int victoryPoints)
+        +void ReceiveAttack(Hero attacker)
+    }
+
+    class Goblin {
+        +Goblin(string name, int victoryPoints)
     }
 
     class Wizard {
-        +string Name
-        +Inventory Inventory
-        +int Health
-        +int InitialHealth
+        +InventoryMagic InventoryMagic
         +Wizard(string name)
         +int GetAttackValue()
         +int GetDefenseValue()
-        +void ReceiveAttack(IAttacker attacker)
-        +void Cure()
     }
 
     class Elve {
-        +string Name
-        +Inventory Inventory
-        +int Health
-        +int InitialHealth
         +Elve(string name)
-        +int GetAttackValue()
-        +int GetDefenseValue()
-        +void ReceiveAttack(IAttacker attacker)
-        +void Cure()
     }
 
     class Dwarve {
-        +string Name
-        +Inventory Inventory
-        +int Health
-        +int InitialHealth
         +Dwarve(string name)
-        +int GetAttackValue()
-        +int GetDefenseValue()
-        +void ReceiveAttack(IAttacker attacker)
-        +void Cure()
     }
 
     class Inventory {
-        +Axe Axe
-        +Armor Armor
-        +MagicStaff MagicStaff
-        +Spellbook Spellbook
-        +Sword Sword
-        +Tunic Tunic
+        +Item Axe
+        +Item Armor
+        +Item Sword
+        +Item Tunic
         +void AddAxe(Axe axe)
         +void AddArmor(Armor armor)
-        +void AddMagicStaff(MagicStaff staff)
-        +void AddSpellbook(Spellbook spellbook)
         +void AddSword(Sword sword)
         +void AddTunic(Tunic tunic)
         +void RemoveAxe()
         +void RemoveArmor()
-        +void RemoveMagicStaff()
-        +void RemoveSpellbook()
         +void RemoveSword()
         +void RemoveTunic()
         +int GetAttackValue()
         +int GetDefenseValue()
     }
 
-    class Axe {
+    class InventoryMagic {
+        +Item MagicStaff
+        +Item Spellbook
+        +void AddMagicStaff(MagicStaff magicStaff)
+        +void AddSpellbook(Spellbook spellbook)
+        +void RemoveMagicStaff()
+        +void RemoveSpellbook()
+        +int GetAttackValue()
+        +int GetDefenseValue()
+    }
+
+    class Item {
+        <<abstract>>
         +int AttackValue
         +int DefenseValue
+        #Item(int attackValue, int defenseValue)
+    }
+
+    class Axe {
         +Axe(int attackValue)
     }
 
     class Armor {
-        +int AttackValue
-        +int DefenseValue
         +Armor(int defenseValue)
     }
 
     class MagicStaff {
-        +int AttackValue
-        +int DefenseValue
         +MagicStaff(int attackValue, int defenseValue)
     }
 
     class Sword {
-        +int AttackValue
-        +int DefenseValue
         +Sword(int attackValue)
     }
 
     class Tunic {
-        +int AttackValue
-        +int DefenseValue
         +Tunic(int defenseValue)
     }
 
     class Spell {
-        +int AttackValue
-        +int DefenseValue
         +Spell(int attackValue, int defenseValue)
     }
 
     class Spellbook {
+        +int AttackValue
+        +int DefenseValue
         +Spell[] Spells
         +Spellbook()
         +void AddSpell(Spell spell)
@@ -110,19 +117,28 @@ classDiagram
         +int GetDefenseValue()
     }
 
-    IAttacker <|.. Wizard
-    IAttacker <|.. Elve
-    IAttacker <|.. Dwarve
+    Character <|-- Hero
+    Character <|-- Enemy
+    Hero <|-- Wizard
+    Hero <|-- Elve
+    Hero <|-- Dwarve
+    Enemy <|-- Goblin
+    Item <|-- Axe
+    Item <|-- Armor
+    Item <|-- MagicStaff
+    Item <|-- Sword
+    Item <|-- Tunic
+    Item <|-- Spell
+    Item <|-- Spellbook
 
-    Wizard "1" *-- "1" Inventory : has
-    Elve "1" *-- "1" Inventory : has
-    Dwarve "1" *-- "1" Inventory : has
+    Character "1" *-- "1" Inventory : has
+    Wizard "1" *-- "1" InventoryMagic : has
 
     Inventory "1" o-- "0..1" Axe : contains
     Inventory "1" o-- "0..1" Armor : contains
-    Inventory "1" o-- "0..1" MagicStaff : contains
-    Inventory "1" o-- "0..1" Spellbook : contains
+    InventoryMagic "1" o-- "0..1" MagicStaff : contains
+    InventoryMagic "1" o-- "0..1" Spellbook : contains
     Inventory "1" o-- "0..1" Sword : contains
     Inventory "1" o-- "0..1" Tunic : contains
-    Spellbook "1" *-- "0..*" Spell : contains
+    Spellbook "0..*" o-- "0..*" Spell : contains
 ```
